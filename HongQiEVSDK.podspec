@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.summary      = "A short description of HongQiEVSDK."
 
   s.description  = <<-DESC
-HongQi EV SDK!
+		   HongQi EV Easy Fast!
                    DESC
 
   s.homepage     = "http://EXAMPLE/HongQiEVSDK"
@@ -28,11 +28,17 @@ HongQi EV SDK!
   s.license      = "MIT (example)"
 
   s.author             = { "张三" => "zhangsan0103@gmail.com" }
+
+  s.platform     = :ios, "8.0"
+
+  s.ios.deployment_target = "8.0"
+
    s.source       = { :git => "http://EXAMPLE/HongQiEVSDK.git", :tag => "#{s.version}" }
 
 
-  s.source_files  = "Classes", "Classes/**/*.{h,m}"
-  s.exclude_files = "Classes/Exclude"
 
-  
+   s.source_files  = "HongQiEVSDK", "HongQiEVSDKiOS/HongQiEVSDK/*.{h,m,c}"
+  s.exclude_files = "Classes/Exclude"
+  s.resource = "HongQiEVSDKiOS/HongQiEVSDK/CarResource.bundle"
+
 end
