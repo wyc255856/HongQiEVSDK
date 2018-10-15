@@ -54,7 +54,6 @@
 		53B6024C21002819000DAC14 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6024721002819000DAC14 /* Default-568h.png */; };
 		53B6024D21002819000DAC14 /*  Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6024821002819000DAC14 /*  Default@2x.png */; };
 		53B6024E210028DE000DAC14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53B601BB20FF3DDE000DAC14 /* LaunchScreen.storyboard */; };
-		53E3251921746526001B8D31 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53B6020E20FF3DDE000DAC14 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -364,7 +363,6 @@
 				53B6021820FF3DDF000DAC14 /* Assets.xcassets in Resources */,
 				53B6024D21002819000DAC14 /*  Default@2x.png in Resources */,
 				53B6024C21002819000DAC14 /* Default-568h.png in Resources */,
-				53E3251921746526001B8D31 /* Info.plist in Resources */,
 				53B6024E210028DE000DAC14 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
