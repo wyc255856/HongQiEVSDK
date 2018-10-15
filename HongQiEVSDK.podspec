@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "http://EXAMPLE/HongQiEVSDK"
 
-  s.license      = "MIT (example)"
+  s.license      = "Copyright (c) 2018年 HongQiEVSDK. All rights reserved."
 
   s.author             = { "张三" => "zhangsan0103@gmail.com" }
 
