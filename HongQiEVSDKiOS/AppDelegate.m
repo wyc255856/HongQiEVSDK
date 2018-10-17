@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WelcomeViewController.h"
+#import "ViewController.h"
 
 @interface AppDelegate ()
 
@@ -25,8 +26,11 @@
     
     [NSThread sleepForTimeInterval:3.0];//设置启动页面时间
     
-    WelcomeViewController *vc = [[WelcomeViewController alloc] init];
+//    WelcomeViewController *vc = [[WelcomeViewController alloc] init];
+//    self.window.rootViewController = vc;
+    ViewController *vc = [[ViewController alloc] init];
     self.window.rootViewController = vc;
+
 
     return YES;
 }

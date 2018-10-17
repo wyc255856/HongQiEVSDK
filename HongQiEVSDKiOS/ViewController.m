@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(100, 200, 100, 44)];
     [button setTitle:@"去看车" forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -27,7 +28,7 @@
 }
 
 - (void)buttonClicked {
-    WelcomeViewController *vc = [[WelcomeViewController alloc] initWithCarName:nil];
+    WelcomeViewController *vc = [[WelcomeViewController alloc] initWithCarName:@"EV_1"];
     [self presentViewController:vc animated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {

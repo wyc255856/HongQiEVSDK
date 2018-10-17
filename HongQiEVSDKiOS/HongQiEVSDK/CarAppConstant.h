@@ -53,7 +53,7 @@
 //在线设置页面web URL
 #define SettingURL   (@"http://haoweisys.com/C217/C217_1/pages/set.html")
 #define SettingURLByType(sType)   ([NSString stringWithFormat:@"%@%@/pages/setPhone.html",BaseURL,sType])
-#define VisitorSettingURLByType(sType)   ([NSString stringWithFormat:@"%@%@/pages/setting.html",BaseURL,sType])
+#define VisitorSettingURLByType(sType)   ([NSString stringWithFormat:@"%@%@/pages/set.html",BaseURL,sType])
 
 // 是否下载本地资源包状态
 typedef NS_ENUM(NSUInteger, nState) {
@@ -80,33 +80,10 @@ typedef NS_ENUM(NSUInteger, nMode) {
 //通过车名称获取车型
 #define kFuncGetCarTypeByCarName(sName)\
 ^(){NSDictionary *dic = @{\
-@"CA64571-CJCH2MBW":@"C217_3",\
-@"CA64571-CJCH2MCW":@"C217_3",\
-@"CA64571-JCHMBW":@"C217_2",\
-@"CA64571-JCHMCW":@"C217_2",\
-@"CA6457A1-CJCH2ABW":@"C217_6",\
-@"CA6457A1-CJCH2ACW":@"C217_6",\
-@"CA6457A1-JCHABW":@"C217_5",\
-@"CA6457A1-JCHACW":@"C217_5",\
-@"CA6457A1-JCSAB":@"C217_4",\
-@"CA6457A-CJCH2ABW":@"C217_6",\
-@"CA6457A-CJCH2ACW":@"C217_6",\
-@"CA6457A-CJCH4ABW":@"C217_7",\
-@"CA6457A-CJCH4ACW":@"C217_7",\
-@"CA6457A-CJCH4ARW":@"C217_7",\
-@"CA6457A-JCHABW":@"C217_5",\
-@"CA6457A-JCHACW":@"C217_5",\
-@"CA6457A-JCSAB":@"C217_4",\
-@"CA6457A-JCSAC":@"C217_4",\
-@"CA6457-CJCH2MBW":@"C217_3",\
-@"CA6457-CJCH2MCW":@"C217_3",\
-@"CA6457-CJCH2MRW":@"C217_3",\
-@"CA6457-CJCHMBW":@"C217_2",\
-@"CA6457-CJCHMCW":@"C217_2",\
-@"CA6457-JCHMBW":@"C217_2",\
-@"CA6457-JCHMCW":@"C217_2",\
-@"CA6457-JCSMBW":@"C217_1",\
-@"CA6457-JCSMCW":@"C217_1",};\
+@"EV_1":@"EV_1",\
+@"EV_2":@"EV_2",\
+@"EV_3":@"EV_3",\
+@"EV_4":@"EV_4",};\
 return dic[sName];\
 }()
 
