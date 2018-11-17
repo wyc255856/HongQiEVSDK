@@ -46,7 +46,8 @@
         }else{
             [[JKEventHandler shareInstance].webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@",SettingURLByType(sCarName),urlBackStr]]]];
         }
-    
+    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",SettingURLByType(sCarName),urlBackStr]);
+
 //
 //    if([[ShareManager shareInstance] isBlankString:sCarName]){
 //        [[JKEventHandler shareInstance].webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString: [NSString stringWithFormat:@"%@%@",VisitorSettingURLByType(sCarName),urlBackStr]]]];

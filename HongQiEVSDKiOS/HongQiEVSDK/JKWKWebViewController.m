@@ -461,6 +461,12 @@ completionHandler:(void (^)(NSString * __nullable result))completionHandler {
         
         
     }];//删除所有的回调事件
+    
+    //删除监听者
+    [_webView removeObserver:self forKeyPath:@"loading"];
+    [_webView removeObserver:self forKeyPath:@"title"];
+    [_webView removeObserver:self forKeyPath:@"estimatedProgress"];
+
 }
 
 - (void)didReceiveMemoryWarning {
