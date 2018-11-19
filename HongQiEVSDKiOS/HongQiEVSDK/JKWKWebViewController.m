@@ -19,7 +19,6 @@
 
 
 
-
 @interface JKWKWebViewController ()<WKNavigationDelegate, WKUIDelegate, LoadFailedAlertViewDelegate>
 
 @property (nonatomic, strong) WKWebView *webView;
@@ -48,6 +47,30 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"后退" style:UIBarButtonItemStyleDone target:self action:@selector(goback)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"前进" style:UIBarButtonItemStyleDone target:self action:@selector(gofarward)];
     
+    
+    //将要进入全屏
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidResignKeyNotification object:nil];
+    //退出全屏
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
+}
+-(void)startFullScreen {
+    NSLog(@"进入全屏");
+    UIApplication *application=[UIApplication sharedApplication];
+    [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
+    application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI/2);
+    CGRect frame = [UIScreen mainScreen].applicationFrame;
+    application.keyWindow.bounds = CGRectMake(0, 0, frame.size.height + 20, frame.size.width);
+}
+
+-(void)endFullScreen {
+    NSLog(@"退出全屏XXXX");
+    UIApplication *application=[UIApplication sharedApplication];
+    [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
+    CGRect frame = [UIScreen mainScreen].applicationFrame;
+    application.keyWindow.bounds = CGRectMake(0, 0, frame.size.width, frame.size.height + 20);
+    [UIView animateWithDuration:0.25 animations:^{
+        application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI * 2);
+    }];
 }
 
 #pragma clang diagnostic push
@@ -93,6 +116,10 @@
     //通过默认的构造器来创建对象
     _webView = [[WKWebView alloc] initWithFrame:self.view.bounds
                                   configuration:config];
+    
+    [_webView setOpaque:false];
+    _webView.backgroundColor = [UIColor blackColor];
+    
 
     //webview禁止滚动
     _webView.scrollView.bounces = false;
@@ -153,6 +180,7 @@
                   context:nil];
     
 }
+
 /**
  返回按钮
  @return 关闭按钮
