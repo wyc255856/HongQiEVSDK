@@ -51,7 +51,7 @@
     //将要进入全屏
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidResignKeyNotification object:nil];
     //退出全屏
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
 }
 -(void)startFullScreen {
     NSLog(@"进入全屏");
@@ -68,9 +68,9 @@
     [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     application.keyWindow.bounds = CGRectMake(0, 0, frame.size.width, frame.size.height + 20);
-    [UIView animateWithDuration:0.25 animations:^{
+   // [UIView animateWithDuration:0.25 animations:^{
         application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI * 2);
-    }];
+   // }];
 }
 
 #pragma clang diagnostic push
