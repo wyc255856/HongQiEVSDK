@@ -95,7 +95,7 @@
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
         [invocation setSelector:selector];
         [invocation setTarget:[UIDevice currentDevice]];
-        int val =nScreen;
+        int val =UIInterfaceOrientationLandscapeRight;
         [invocation setArgument:&val atIndex:2];
         [invocation invoke];
     }
@@ -104,6 +104,7 @@
 
 -(void)endFullScreen {
     NSLog(@"退出全屏XXXX");
+    /*
     UIApplication *application=[UIApplication sharedApplication];
     [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
     CGRect frame = [UIScreen mainScreen].applicationFrame;
@@ -111,6 +112,17 @@
     [UIView animateWithDuration:0.25 animations:^{
         application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI * 2);
     }];
+    */
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val =UIInterfaceOrientationUnknown;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+    
 }
 
 #pragma clang diagnostic push
