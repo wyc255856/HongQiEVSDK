@@ -26,6 +26,8 @@
 @property (nonatomic,copy) NSString *strFileName;  //标题
 @property (nonatomic,copy) NSString *fileTmpPath;  //tap目录
 @property (nonatomic, strong) UIButton      *backBtn;//返回按钮
+@property (nonatomic, assign) NSUInteger nTypeScreen;
+
 
 @end
 
@@ -47,19 +49,57 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"后退" style:UIBarButtonItemStyleDone target:self action:@selector(goback)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"前进" style:UIBarButtonItemStyleDone target:self action:@selector(gofarward)];
     
-    
+    /*
     //将要进入全屏
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidResignKeyNotification object:nil];
     //退出全屏
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
+    */
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upcomingFullScreen) name:UIWindowDidResignKeyNotification object:nil];
+
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];//进入全屏
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
+
 }
+
+-(void)upcomingFullScreen {
+    //nTypeScreen =
+    NSLog(@"即将进入全屏");
+
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    nScreen =orientation;
+//    if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
+//
+//    }else {
+//
+//    }
+    
+}
+
 -(void)startFullScreen {
     NSLog(@"进入全屏");
+    /*
     UIApplication *application=[UIApplication sharedApplication];
     [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
     application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI/2);
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     application.keyWindow.bounds = CGRectMake(0, 0, frame.size.height + 20, frame.size.width);
+     */
+    
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)]) {
+        SEL selector = NSSelectorFromString(@"setOrientation:");
+        NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:[UIDevice instanceMethodSignatureForSelector:selector]];
+        [invocation setSelector:selector];
+        [invocation setTarget:[UIDevice currentDevice]];
+        int val =nScreen;
+        [invocation setArgument:&val atIndex:2];
+        [invocation invoke];
+    }
+        
 }
 
 -(void)endFullScreen {
@@ -68,9 +108,9 @@
     [application setStatusBarOrientation: UIInterfaceOrientationLandscapeRight];
     CGRect frame = [UIScreen mainScreen].applicationFrame;
     application.keyWindow.bounds = CGRectMake(0, 0, frame.size.width, frame.size.height + 20);
-   // [UIView animateWithDuration:0.25 animations:^{
+    [UIView animateWithDuration:0.25 animations:^{
         application.keyWindow.transform=CGAffineTransformMakeRotation(M_PI * 2);
-   // }];
+    }];
 }
 
 #pragma clang diagnostic push
