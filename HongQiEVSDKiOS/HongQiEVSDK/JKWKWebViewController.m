@@ -56,12 +56,12 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];
     */
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upcomingFullScreen) name:UIWindowDidResignKeyNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(upcomingFullScreen) name:UIWindowDidResignKeyNotification object:nil];
 
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];//进入全屏
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
 
 }
 

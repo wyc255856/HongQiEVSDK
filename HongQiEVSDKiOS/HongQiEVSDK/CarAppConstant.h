@@ -48,10 +48,10 @@
 #define KIsiPhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
 
 //在线车型首页web URL
-#define BaseURL   (@"http://www.haoweisys.com/EV/")
+#define BaseURL   (@"http://www.e-guides.faw.cn/EV/")
 
 //在线设置页面web URL
-#define SettingURL   (@"http://haoweisys.com/C217/C217_1/pages/set.html")
+#define SettingURL   (@"http://www.e-guides.faw.cn/C217/C217_1/pages/set.html")
 #define SettingURLByType(sType)   ([NSString stringWithFormat:@"%@%@/pages/setPhone.html",BaseURL,sType])
 #define VisitorSettingURLByType(sType)   ([NSString stringWithFormat:@"%@%@/pages/set.html",BaseURL,sType])
 
