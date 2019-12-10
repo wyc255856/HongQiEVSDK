@@ -67,6 +67,9 @@
     }
     return self;
 }
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+        return UIInterfaceOrientationLandscapeRight;
+}
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Woverriding-method-mismatch"
@@ -201,21 +204,38 @@
         [userDefaults setObject:@"1" forKey:@"upLoad"];
     }
     
+//    //获取服务器最新资源版本号
+//    [self getAppNewVersion];
+//
+//    if(![[ShareManager shareInstance] isBlankString:strCarName]){
+//        JKWKWebViewController *jkVC = [JKWKWebViewController new];
+//        jkVC.url = [NSString stringWithFormat:@"%@%@",BaseURL,strCarName];
+//        jkVC.bottomViewController = self;
+//        [self presentViewController:jkVC  animated:NO completion:nil];
+//
+//    }else{
+//        ChooseCarModelViewController *vc = [[ChooseCarModelViewController alloc] init];
+//        vc.bottomViewController = self;
+//        [self presentViewController:vc  animated:NO completion:nil];
+//
+//    }
+//    
     //获取服务器最新资源版本号
     [self getAppNewVersion];
-
+    
     if(![[ShareManager shareInstance] isBlankString:strCarName]){
         JKWKWebViewController *jkVC = [JKWKWebViewController new];
         jkVC.url = [NSString stringWithFormat:@"%@%@",BaseURL,strCarName];
         jkVC.bottomViewController = self;
         [self presentViewController:jkVC  animated:NO completion:nil];
-
+        
     }else{
         ChooseCarModelViewController *vc = [[ChooseCarModelViewController alloc] init];
         vc.bottomViewController = self;
         [self presentViewController:vc  animated:NO completion:nil];
-
+        
     }
+    
 //    if(Visitor == NO){
 //        if(strCarName){
 //            //获取服务器最新资源版本号
